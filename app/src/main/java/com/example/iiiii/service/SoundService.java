@@ -11,6 +11,8 @@ import com.example.soundgosei.R;
 
 import java.util.Random;
 
+import static android.os.Build.VERSION_CODES.R;
+
 
 public class SoundService extends AsyncTask<Integer, Integer, Integer> {
     Random r = new Random();
@@ -23,7 +25,7 @@ public class SoundService extends AsyncTask<Integer, Integer, Integer> {
         this.context = context;
         soundPool = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);
 
-        sound[0] = soundPool.load(context, R.raw.sound1, 1);
+        sound[0] = soundPool.load(context, R.raw.one, 1);
         sound[1] = soundPool.load(context, R.raw.sound2, 1);
         sound[2] = soundPool.load(context, R.raw.sound3, 1);
         sound[3] = soundPool.load(context, R.raw.sound4, 1);
