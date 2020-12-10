@@ -14,9 +14,10 @@ import java.util.Random;
 
 public class SoundService extends AsyncTask<Integer, Integer, Integer> {
     Random r = new Random();
-    int sound[] = new int[5];
+    private int r1;
+    private int sound[] = new int[5];
     private Context context;
-    public SoundPool soundPool;
+    private SoundPool soundPool;
 
     public SoundService(Context context){
         super();
@@ -24,9 +25,9 @@ public class SoundService extends AsyncTask<Integer, Integer, Integer> {
         soundPool = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);
 
         sound[0] = soundPool.load(context,R.raw.one, 1);
-//        sound[1] = soundPool.load(context, R.raw.sound2, 1);
-//        sound[2] = soundPool.load(context, R.raw.sound3, 1);
-//        sound[3] = soundPool.load(context, R.raw.sound4, 1);
+        sound[1] = soundPool.load(context, R.raw.two, 1);
+        sound[2] = soundPool.load(context, R.raw.three, 1);
+        sound[3] = soundPool.load(context, R.raw.four, 1);
 //        sound[4] = soundPool.load(context, R.raw.sound5, 1);
     }
 
@@ -34,11 +35,36 @@ public class SoundService extends AsyncTask<Integer, Integer, Integer> {
     protected Integer doInBackground(Integer... params) {
 
         soundPool.play(sound[0], 1.0f, 1.0f, 0, 0, 1.0f);
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            Thread.sleep(500);
+            soundPool.play(sound[0], 1.0f, 1.0f, 0, 0, 1.0f);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        for(int i=0; i<5; i++){
+            r1 = r.nextInt(4);
+            switch (r1){
+                case 0:
+                    soundPool.play(sound[0], 1.0f, 1.0f, 0, 0, 1.0f);
+                    break;
+                case 1:
+                    soundPool.play(sound[1], 1.0f, 1.0f, 0, 0, 1.0f);
+                    break;
+                case 2:
+                    soundPool.play(sound[2], 1.0f, 1.0f, 0, 0, 1.0f);
+                    break;
+                case 3:
+                    soundPool.play(sound[3], 1.0f, 1.0f, 0, 0, 1.0f);
+                    break;
+            }
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+
         return null;
     }
 
